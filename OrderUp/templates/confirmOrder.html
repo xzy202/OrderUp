@@ -14,6 +14,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="{%static 'action.js' %}"></script>
+
+
 </head>
 
 <body>
@@ -23,7 +29,6 @@
      <a href="{% url 'main' %}" class="brand-logo">&nbsp;OrderUp</a>
      <ul id="nav-mobile" class="right">
        <li><a href="{% url 'findmyOrder' %}">find my order</i></a></li>
-       <li><a href="{% url 'login' %}">log in</i></a></li>
      </ul>
    </div>
 </nav>
@@ -48,50 +53,45 @@
     </div>
 
 
-<div class="col s12 m10 l10">
-
+<div class="col s12 m8 l8">
 <div class="row">
-<div class="input-field col s12 m12 l12">
+  <div class="col s12 m12 l12">
+    <div class="card z-depth-1">
+      <div class="card-content">
+        <div class="row">
+          <div class="col s12 m3 l3 ">
 
-{% for resturant in resturants %} 
-<div>
-       <div class="card">
-         <div class="card-content">
-           <div class="row">
-             <div class="col s3 m3 l3 ">
             {% if resturant.image %}
             <img src="{% url 'get_photo' resturant.id %}" style="width:100%">
             {% endif %} 
-              </div>
-              <div class="col s3 m3 l4">
-                <span class="card-title">{{resturant.name}}</span>
-
-                <div class="chip">{{resturant.category}}</div>
-
-              </div>
-              <div class="col s3">
-                <span class="card-title">Contact us</span>
-                <br>
-                <p> phone:{{resturant.phone}}</p>
-                <p> address:{{resturant.address}}</p>
-            </div>
+             <img width="100%" height="100%">
            </div>
-          </div>
-          <div class="card-action">
-              <a href="{% url 'viewresturant' resturant.id %}">Click here to see the menu!</a>
-          </div>
+           <div class="col s8">
+           <ul>
+              <li><h>Congradulations ! Your order has been successfully placed.</h></li>
+              <br>
+              <li> <h>Here is your order number from {{order.resturant.name}}</h></li>
+              <li><h4><a href="{% url 'myOrder' order.ordernumber%}">#{{order.ordernumber}}</h4></a><li>
+              <br>
+              <li>Note: Please present your order number when you pick up your order. See you soon</li>
+            </ul>
+           </div>
         </div>
+       </div>
+
+     </div>
+
+   <div class="divier"></div>
+
+  </div>
 </div>
-  {% endfor %}
-
-
-
+</div>
 
 </div>
 
 
-
 </div>
+
 <footer class="page-footer">
          <div class="container">
            <div class="row">

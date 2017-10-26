@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html> 
+<head>
+  <meta charset="UTF-8">
+  <title>OrderUp</title>
+
+  {% load staticfiles %} 
+
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+
+<body>
+
+<nav>
+   <div class="nav-wrapper">
+     <a href=# class="brand-logo">&nbsp;OrderUp</a>
+   </div>
+</nav>
+
+<div class="row">
+    <div class="col s12 m2 l2">
+
+    </div>
+
+
+<div class="col s12 m8 l8">
+    <h5>Register a new Resturant</h5>
+    <br><br>
+    <form enctype="multipart/form-data" method="post" action="{% url 'addResturant'%}">
+        {{form}}
+        {% csrf_token %}
+        <input type="submit" class="btn btn-sm btn-primary" value="Create" >
+        <input type="reset" class="btn btn-sm btn-primary" value="Reset" >
+    </form>
+
+    
+</div>
+
+<div class="col s2 m2 l2">
+
+      <br>
+       <div class="card">
+
+   </div>
+</div>
+
+
+</div>
+
+
+
+  
+</body>
+</html>

@@ -14,6 +14,12 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  <script type="text/javascript" src="{%static 'action.js' %}"></script>
+
+
 </head>
 
 <body>
@@ -23,7 +29,6 @@
      <a href="{% url 'main' %}" class="brand-logo">&nbsp;OrderUp</a>
      <ul id="nav-mobile" class="right">
        <li><a href="{% url 'findmyOrder' %}">find my order</i></a></li>
-       <li><a href="{% url 'login' %}">log in</i></a></li>
      </ul>
    </div>
 </nav>
@@ -48,47 +53,33 @@
     </div>
 
 
-<div class="col s12 m10 l10">
+<div class="col s12 m8 l8">
 
 <div class="row">
-<div class="input-field col s12 m12 l12">
+  <div class="col s12 m12 l12">
 
-{% for resturant in resturants %} 
-<div>
-       <div class="card">
-         <div class="card-content">
-           <div class="row">
-             <div class="col s3 m3 l3 ">
-            {% if resturant.image %}
-            <img src="{% url 'get_photo' resturant.id %}" style="width:100%">
-            {% endif %} 
-              </div>
-              <div class="col s3 m3 l4">
-                <span class="card-title">{{resturant.name}}</span>
+   <div class="divier"></div>
 
-                <div class="chip">{{resturant.category}}</div>
+    <h3>Find your order</h3>
 
-              </div>
-              <div class="col s3">
-                <span class="card-title">Contact us</span>
-                <br>
-                <p> phone:{{resturant.phone}}</p>
-                <p> address:{{resturant.address}}</p>
-            </div>
-           </div>
-          </div>
-          <div class="card-action">
-              <a href="{% url 'viewresturant' resturant.id %}">Click here to see the menu!</a>
-          </div>
-        </div>
+    <form method="POST" action = "{% url 'findmyOrder' %}">   
+        Order #   
+        <input type="text" maxlength="18" name="ordernumber" required/>
+         <button type="submit" class="btn btn-sm btn-primary">Submit</button>    
+        {% csrf_token %} 
+    </form>
+
+  </div>
 </div>
-  {% endfor %}
 
 
 
 
 </div>
 
+<div class="col s2 m2 l2">
+
+</div>
 
 
 </div>
@@ -96,14 +87,14 @@
          <div class="container">
            <div class="row">
              <div class="col l6 m6 s12">
-               <h5 class="white-text">About us</h5>
-               <p class="grey-text text-lighten-4"></p>
+               <h5 class="white-text">Who we are</h5>
+               <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
              </div>
              <div class="col m4 l4 offset-l2 s12">
-               <h5 class="white-text"></h5>
+               <h5 class="white-text">Links</h5>
                <ul>
-                 <li><a class="grey-text text-lighten-3" href="#!">Contact: 999-999-9999</a></li>
-                 <li><a class="grey-text text-lighten-3" href="#!">Address: Carnegie Mellon university</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
+                 <li><a class="grey-text text-lighten-3" href="#!">Link 2</a></li>
                </ul>
              </div>
            </div>
@@ -111,7 +102,7 @@
          <div class="footer-copyright">
            <div class="container">
            © 2017 Copyright Text
-           <a class="grey-text text-lighten-4 right" href="#!"></a>
+           <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
            </div>
          </div>
 </footer>
