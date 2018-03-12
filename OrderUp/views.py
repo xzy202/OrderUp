@@ -26,6 +26,12 @@ import random
 import json
 import sys
 
+def remote():
+    pass
+
+def remote1():
+    pass
+        
 def main(request):
     context={}
     resturants = Resturant.objects.all()
@@ -52,7 +58,7 @@ def addResturant(request):
 def viewresturant(request,id):
     context={}
     id = id
-    resturant = get_object_or_404(Resturant,id = id) 
+    resturant = get_object_or_404(Resturant,id = id)
     context['resturant'] = resturant
     context['orderform'] = OrderForm();
 
@@ -66,7 +72,7 @@ def addOrder(request,id):
     context={}
     order = OrderForm(request.POST)
     quantity = request.POST['quantity']
-    resturant = get_object_or_404(Resturant,id = id) 
+    resturant = get_object_or_404(Resturant,id = id)
     price = resturant.price
     if not order.is_valid():
     	context['resturant'] = resturant;
@@ -86,12 +92,12 @@ def placeorder(request,id):
     orders = Order.objects.filter(resturant = resturant).order_by("timestamp").reverse()
     order = orders[0]
     random_number = []
-  
-    for i in range (10):    
-      random_number.append( str(random.randrange(0,9,1)))  
-    
+
+    for i in range (10):
+      random_number.append( str(random.randrange(0,9,1)))
+
     random_number = "".join(random_number)
-      
+
     order.ordernumber = random_number
     order.save()
 
@@ -114,7 +120,7 @@ def findmyorder(request):
         return render(request,'findmyOrder.html',context);
     print(request.POST)
     ordernumber = request.POST.get('ordernumber', False)
-    
+
     return redirect(reverse('myOrder',kwargs={'ordernumber':ordernumber}))
 
 def editorder(request,id):
@@ -169,10 +175,8 @@ def getlist(request,id):
 
 
     for i in range(0,orders.count()):
-        order = orders[i] 
+        order = orders[i]
         all_list.append(order)
-        
+
     response_text = serializers.serialize('json', all_list)
     return HttpResponse(response_text, content_type='application/json')
-
-    
