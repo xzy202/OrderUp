@@ -26,15 +26,9 @@ import random
 import json
 import sys
 
-def local():
+def console():
     pass
 
-def remote():
-    pass
-
-def remote1():
-    pass
-        
 def main(request):
     context={}
     resturants = Resturant.objects.all()
