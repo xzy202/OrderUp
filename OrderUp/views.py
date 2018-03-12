@@ -26,18 +26,6 @@ import random
 import json
 import sys
 
-def local():
-    pass
-
-def remote():
-    pass
-
-def remote1():
-    pass
-
-def remote2():
-    pass
-
 def console():
     pass
 
