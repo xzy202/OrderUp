@@ -34,7 +34,7 @@ def remote():
 
 def remote1():
     pass
-
+        
 def main(request):
     context={}
     resturants = Resturant.objects.all()
